@@ -1,0 +1,34 @@
+{
+  "engineName": "diversity-orgs-tech",
+  "endpointBase": "https://cf0133fcec254cafba5f4ce69a3859a8.ent-search.eastus2.azure.elastic-cloud.com",
+  "searchKey": "search-cbmv1uhj1s264nrvpsdpoehd",
+  "resultFields": [
+    "twitter",
+    "notes",
+    "city",
+    "diversity_focus",
+    "parent_organization",
+    "name",
+    "region",
+    "technology_focus",
+    "url",
+    "id",
+    "organization_logo_url_from_parent_organization"
+  ],
+  "sortFields": [
+    "city",
+    "diversity_focus",
+    "region",
+    "technology_focus",
+    "parent_organization"
+  ],
+  "facets": [
+    "city",
+    "diversity_focus",
+    "parent_organization",
+    "technology_focus",
+    "region"
+  ],
+  "titleField": "name",
+  "urlField": "url"
+}
