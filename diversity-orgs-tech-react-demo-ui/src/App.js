@@ -84,7 +84,7 @@ function ResultView(props) {
     return (
         <div style={flexStyle}>
             <img 
-                src={props.result.organization_logo_url_from_parent_organization.raw}
+                src={props.result.organization_logo.raw}
                 alt={parentOrg} Logo
                 style={imgStyle}
             />
@@ -92,6 +92,7 @@ function ResultView(props) {
                 {smallDivs(parentOrg)}
                 {smallDivs(props.result.city.raw)}
                 <h1>{props.result.url.raw ? hasLink : noLink}</h1>
+        {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-﻿Name,City,Region,Notes,Parent Organization,Technology Focus,Diversity Focus,Twitter,URL,organization_logo_url (from Parent Organization)
+﻿Name,City,Region,Notes,Parent Organization,Technology Focus,Diversity Focus,Twitter,URL,organization_logo
 6° Webinar Cloud Girls,,Brazil,,,General Technology,Women,,,
 Atlanta Latinas in Tech,"Atlanta, Georgia",AMER-East,,Latinas in Tech,General Technology,"Latinx,Women",,https://www.latinasintech.org/chapter/atlanta,https://www.latinasintech.org/wp-content/uploads/2019/11/Logo_LiT-1.png
 Austin Latinas in Tech,"Austin, Texas",AMER-C-South,,Latinas in Tech,General Technology,"Latinx,Women",,https://www.latinasintech.org/chapter/austin,https://www.latinasintech.org/wp-content/uploads/2019/11/Logo_LiT-1.png
@@ -73,7 +73,7 @@ Miami Latinas in Tech,"Miami, Florida",AMER-East,,Latinas in Tech,General Techno
 MusesCodeJS,,APJ-ANZ,,,Javascript,Women,@BrisMuses,http://musescodejs.org,
 New York City Latinas in Tech,"New York City, New York",AMER-East,,Latinas in Tech,General Technology,"Latinx,Women",,https://www.latinasintech.org/chapter/new-york-city,https://www.latinasintech.org/wp-content/uploads/2019/11/Logo_LiT-1.png
 NYC PyLadies,"New York City, New York",AMER-East,,Pyladies,Python,Women,@NYCPyLadies,http://www.meetup.com/NYC-PyLadies/,https://github.com/pyladies/pyladies-assets/blob/master/geek/png/pylady_geek_full_standard.png?raw=true
-Out in Tech : Indy,"Indianapolis, Indiana",AMER-C-North,,Out in Tech,General Technology,Women,@outintech_indy,https://www.outintech.com,https://pbs.twimg.com/profile_images/1218186973665550338/n5XxLkHt_400x400.jpg
+Out in Tech : Indy,"Indianapolis, Indiana",AMER-C-North,,Out in Tech,General Technology,Women,@outintech_indy,https://www.outintech.com,https://outintech.com/wp-content/themes/out-in-tech/resources/images/footer-logo-2x.png
 Philly Tech Sistas,"Philadelphia, Pennsylvania",AMER-East,,,General Technology,"BIPOC,Women",,,
 PyLadies Austin,"Austin, Texas",AMER-C-South,,Pyladies,Python,Women,@PyLadiesATX,http://www.meetup.com/PyLadies-ATX/,https://github.com/pyladies/pyladies-assets/blob/master/geek/png/pylady_geek_full_standard.png?raw=true
 PyLadies Berlin,"Berlin, Germany",EMEA-C,,Pyladies,Python,Women,@PyLadiesBer,http://www.meetup.com/pyladies-berlin/,https://github.com/pyladies/pyladies-assets/blob/master/geek/png/pylady_geek_full_standard.png?raw=true
@@ -95,9 +95,9 @@ Tech By Choice,"Los Angeles, California",Online Only,,,General Technology,BIPOC,
 Tech for the Culture,"Houston, Texas",AMER-C-South,"Reggie (One of the organizers) just recently joined Elastic and they are now meeting for their 2021 planning
 ",,General Technology,BIPOC,@techculturetx,,
 Technologist of Color,,AMER-East,Recommended by Mosi Platt,,General Technology,BIPOC,,,
-Techqueria LA,"Los Angeles, California",AMER - West,,Techqueria,General Technology,Latinx,@techqueriala,http://www.techqueria.org,https://d33wubrfki0l68.cloudfront.net/15f83262775e9891b7cdf0ab46a0b658d5625acd/e777e/assets/img/_logos/logo-square.png
-Techqueria NYC 🌮🗽,"New York City, New York",AMER-East,,Techqueria,General Technology,Latinx,@TechqueriaNYC,http://techqueria.org/join,https://d33wubrfki0l68.cloudfront.net/15f83262775e9891b7cdf0ab46a0b658d5625acd/e777e/assets/img/_logos/logo-square.png
-TLA Women in Tech,"London, England",EMEA-UKN,,,General Technology,Women,@TLAWomeninTech,http://www.tlawomenintech.org,
+Techqueria LA,"Los Angeles, California",AMER - West,,Techqueria,General Technology,Latinx,@techqueriala,http://www.techqueria.org,https://github.com/kjaymiller/diversity-orgs-tech-appsearch-demo/blob/main/diversity-orgs-tech-react-demo-ui/public/techquiera.png?raw=true
+Techqueria NYC 🌮🗽,"New York City, New York",AMER-East,,Techqueria,General Technology,Latinx,@TechqueriaNYC,http://techqueria.org/join,https://github.com/kjaymiller/diversity-orgs-tech-appsearch-demo/blob/main/diversity-orgs-tech-react-demo-ui/public/techquiera.png?raw=true
+TLA Women in Tech,"London, England",EMEA-UKN,,,General Technology,Women,@TLAWomeninTech,http://www.tlawomenintech.org,http://tlawomenintech.org/wp-content/uploads/2015/11/cropped-TLA-WIT_logo-021-uai-258x258.png
 Utah Latinas in Tech,"Salt Lake City, Utah",AMER-C-North,,Latinas in Tech,General Technology,"Latinx,Women",,https://www.latinasintech.org/chapter/utah,https://www.latinasintech.org/wp-content/uploads/2019/11/Logo_LiT-1.png
 Washington D.C. Latinas in Tech,"Washington, DC",AMER-East,,Latinas in Tech,General Technology,"Latinx,Women",,https://www.latinasintech.org/chapter/washington-dc,https://www.latinasintech.org/wp-content/uploads/2019/11/Logo_LiT-1.png
 WoMakersCode,"Rio De Janeiro, Brazil",Brazil,,,General Technology,Women,,,
