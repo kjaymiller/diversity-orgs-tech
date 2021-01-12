@@ -125,7 +125,7 @@ export default function App() {
     <div className="container px-2 mx-auto my-4">
         <div>
         <h1><a href="/">DiversityOrgs.Tech</a></h1>
-        <h2 className="my-4 text-3xl">Find groups around the world!</h2>
+        <h2 className="my-4 text-3xl">Find the tech community that's right for you.</h2>
         <p>This is a tool to help folks from underrepresented groups. Search for groups based on their Representation goals or their tech stack.</p>
         <p>If you can't find a group in your area or you know of one we're missing, then let us know with the contact form below.</p>
     </div>
