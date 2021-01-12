@@ -19,14 +19,14 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
 import {
   buildAutocompleteQueryConfig,
-  buildFacetConfigFromConfig,
   buildSearchOptionsFromConfig,
   buildSortOptionsFromConfig,
   getConfig,
-  getFacetFields
 } from "./config/config-helper";
 
 import SortingView from './SortingView';
+import MultiCheckboxFacet from './FacetView';
+
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
 const connector = new AppSearchAPIConnector({
   searchKey,
@@ -36,7 +36,20 @@ const connector = new AppSearchAPIConnector({
 });
 const config = {
   searchQuery: {
-    facets: buildFacetConfigFromConfig(),
+    facets: {
+        city: {
+            type: "value",
+            size: 30,
+        },
+        technology_focus: {
+            type: "value",
+            size: 30,
+        },
+        diversity_focus: {
+            type: "value",
+            size: 30,
+        }
+    },
     ...buildSearchOptionsFromConfig()
   },
   autocompleteQuery: buildAutocompleteQueryConfig(),
@@ -117,9 +130,27 @@ export default function App() {
                           view={SortingView}
                         />
                       )}
-                      {getFacetFields().map(field => (
-                        <Facet key={field} field={field} label={field} />
-                      ))}
+                      <Facet
+                        field="city"
+                        label="City"
+                        filterType="any"
+                        view={MultiCheckboxFacet}
+                        isFilterable={true}
+                      />
+                      <Facet
+                        field="diversity_focus"
+                        label="Diversity Focus"
+                        filterType="any"
+                        view={MultiCheckboxFacet}
+                        isFilterable={true}
+                      />
+                      <Facet
+                        field="technology_focus"
+                        label="Technology Focus"
+                        filterType="any"
+                        view={MultiCheckboxFacet}
+                        isFilterable={true}
+                      />
                     </div>
                   }
                   bodyContent={

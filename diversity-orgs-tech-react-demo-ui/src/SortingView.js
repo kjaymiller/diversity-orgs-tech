@@ -19,14 +19,14 @@ function OrderCase(props) {
   };
   const ascImage = (
     <img
-      src="/heroicons/optimized/outline/chevron-up.svg"
+      src= "{PUBLIC_URL}/heroicons/optimized/outline/chevron-up.svg"
       style={orderImgStyle}
       alt="ascending-order"
     />
   );
   const descImage = (
     <img
-      src="/heroicons/optimized/outline/chevron-down.svg"
+      src= "{PUBLIC_URL}/heroicons/optimized/outline/chevron-down.svg"
       style={orderImgStyle}
       alt="descending-order"
     />
