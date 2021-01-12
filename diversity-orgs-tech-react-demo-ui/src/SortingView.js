@@ -34,9 +34,9 @@ function OrderCase(props) {
 
   switch (props.value.split("|")[3]) {
     case "asc":
-      return ascImage;
+      return "(Ascending)";
     case "desc":
-      return descImage;
+      return "(Descending)";
     default:
       return '';
   }
