@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply font-black;
+    @apply text-4xl;
+}
+
+.parentOrg {
+    @apply mr-2;
+    @apply text-gray-500;
+}
+.tag {
+    @apply border;
+    @apply rounded-lg;
+    @apply p-2;
+    @apply mb-2;
+    }
+
+.resultCardTitle {
+   @apply mt-2;
+    }
