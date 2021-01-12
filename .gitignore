@@ -254,3 +254,4 @@ dmypy.json
 cython_debug/
 
 **/heroicons
+.envrc
