@@ -13,20 +13,20 @@ function OrderCase(props) {
   const orderImgStyle = {
     display: "inline-block",
     marginRight: "5px",
-    paddingTop: "5px",
+    paddingBottom: "5px",
     paddingLeft: "5px",
-    height: "15px"
+    height: "25px"
   };
   const ascImage = (
     <img
-      src= "{PUBLIC_URL}/heroicons/optimized/outline/chevron-up.svg"
+      src= "/heroicons/optimized/outline/chevron-up.svg"
       style={orderImgStyle}
       alt="ascending-order"
     />
   );
   const descImage = (
     <img
-      src= "{PUBLIC_URL}/heroicons/optimized/outline/chevron-down.svg"
+      src= "/heroicons/optimized/outline/chevron-down.svg"
       style={orderImgStyle}
       alt="descending-order"
     />

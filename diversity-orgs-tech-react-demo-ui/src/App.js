@@ -48,6 +48,10 @@ const config = {
         diversity_focus: {
             type: "value",
             size: 30,
+        },
+        parent_organization: {
+            type: "value",
+            size: 30,
         }
     },
     ...buildSearchOptionsFromConfig()
@@ -65,6 +69,7 @@ function ResultView(props) {
         </a>
 
     const noLink = props.result.name.raw
+
     const flexStyle = {
         "display": "flex",
         "flexFlow": "space-around",
@@ -73,7 +78,6 @@ function ResultView(props) {
         "borderRadius": "5px",
         "padding": "50px",
         "margin": "5px",
-        "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
     }
     const imgStyle = {
         "maxWidth": "75px",
@@ -86,12 +90,18 @@ function ResultView(props) {
         "borderRadius": "5px",
         "padding": "5px",
         "border": "1px solid #777",
-        "margin": "10px 5px 5px 5px"
+        "margin": "10px 5px 5px 0px"
     }
-    const parentOrg = props.result.parent_organization.snippet
+
+    function parentOrg () { 
+        if (props.result.parent_organization.snippet) {
+            return <small className="parentOrg">{props.result.parent_organization.snippet}</small>
+        }
+        return ''
+    }
 
     function smallDivs (field) {
-        return field ? <small style={smallStyle}>{field}</small> : ''
+        return field ? <small className="tag">{field}</small> : ''
     }
 
     return (
@@ -102,9 +112,9 @@ function ResultView(props) {
                 style={imgStyle}
             />
             <div>
-                {smallDivs(parentOrg)}
+                {parentOrg()}
                 {smallDivs(props.result.city.raw)}
-                <h1>{props.result.url.raw ? hasLink : noLink}</h1>
+                <h1 className="resultCardTitle">{props.result.url.raw ? hasLink : noLink}</h1>
         {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
             </div>
         </div>
@@ -113,6 +123,13 @@ function ResultView(props) {
 
 export default function App() {
   return (
+    <div className="container px-2 mx-auto my-4">
+        <div>
+        <h1>DiversityOrgs.Tech</h1>
+        <h2 className="my-4 text-3xl">Find groups around the world!</h2>
+        <p>This is a tool to help folks from underrepresented groups. Search for groups based on their Representation goals or their tech stack.</p>
+        <p>If you can't find a group in your area or you know of one we're missing, then let us know with the contact form below.</p>
+    </div>
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
         {({ wasSearched }) => {
@@ -138,11 +155,16 @@ export default function App() {
                         isFilterable={true}
                       />
                       <Facet
+                        field="parent_organization"
+                        label="Parent Organization"
+                        view={MultiCheckboxFacet}
+                        isFilterable={false}
+                      />
+                      <Facet
                         field="diversity_focus"
                         label="Diversity Focus"
                         filterType="any"
                         view={MultiCheckboxFacet}
-                        isFilterable={true}
                       />
                       <Facet
                         field="technology_focus"
@@ -175,5 +197,12 @@ export default function App() {
         }}
       </WithSearch>
     </SearchProvider>
+    <footer>
+        <p>
+            Made by <a href="https://kjaymiller.com">kjaymiller</a>
+        </p>
+        <p><a href="./about.html"><strong>About</strong></a></p>
+    </footer>
+      </div>
   );
 }
