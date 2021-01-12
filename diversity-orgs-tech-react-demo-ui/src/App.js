@@ -72,12 +72,11 @@ function ResultView(props) {
 
     const flexStyle = {
         "display": "flex",
-        "flexFlow": "space-around",
         "alignItems": "center",
         "border": "1px solid #777",
         "borderRadius": "5px",
-        "padding": "50px",
-        "margin": "5px",
+        "padding": "10px 0",
+        "margin": "15px 0",
     }
     const imgStyle = {
         "maxWidth": "75px",

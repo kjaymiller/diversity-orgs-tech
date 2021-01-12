@@ -19,5 +19,5 @@ h1 {
     }
 
 .resultCardTitle {
-   @apply mt-2;
+   @apply my-3;
     }
