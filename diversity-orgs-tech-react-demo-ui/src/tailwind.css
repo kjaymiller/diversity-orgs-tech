@@ -8,16 +8,16 @@ h1 {
 }
 
 .parentOrg {
-    @apply mr-2;
     @apply text-gray-500;
 }
 .tag {
-    @apply border;
     @apply rounded-lg;
+    @apply text-gray-500;
     @apply p-2;
     @apply mb-2;
     }
 
 .resultCardTitle {
    @apply my-3;
+   @apply text-lg;
     }

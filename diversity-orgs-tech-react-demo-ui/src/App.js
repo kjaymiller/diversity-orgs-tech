@@ -70,51 +70,30 @@ function ResultView(props) {
 
     const noLink = props.result.name.raw
 
-    const flexStyle = {
-        "display": "flex",
-        "alignItems": "center",
-        "border": "1px solid #777",
-        "borderRadius": "5px",
-        "padding": "10px 0",
-        "margin": "15px 0",
-    }
-    const imgStyle = {
-        "maxWidth": "75px",
-        "maxHeight": "75px",
-        "marginRight": "25px",
-        "marginLeft": "15px"
-    }
-
-    const smallStyle = {
-        "borderRadius": "5px",
-        "padding": "5px",
-        "border": "1px solid #777",
-        "margin": "10px 5px 5px 0px"
-    }
-
     function parentOrg () { 
         if (props.result.parent_organization.snippet) {
-            return <small className="parentOrg">{props.result.parent_organization.snippet}</small>
+            return <small className="parentOrg mx-2">{props.result.parent_organization.snippet}</small>
         }
         return ''
     }
 
     function smallDivs (field) {
-        return field ? <small className="tag">{field}</small> : ''
+        return field ? <small className="mx-2">{field}</small> : ''
     }
 
     return (
-        <div style={flexStyle}>
-            <img 
-                src={props.result.organization_logo.raw}
-                alt={parentOrg} Logo
-                style={imgStyle}
-            />
-            <div>
+        <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
+            <div className="lg:w-3/4 w-1/4 lg:p-8">
+                <img 
+                    src={props.result.organization_logo.raw}
+                    alt={parentOrg} Logo
+                />
+            </div>
+            <div className="">
+                {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
                 {parentOrg()}
+                <h1 className="text-3xl my-3">{props.result.url.raw ? hasLink : noLink}</h1>
                 {smallDivs(props.result.city.raw)}
-                <h1 className="resultCardTitle">{props.result.url.raw ? hasLink : noLink}</h1>
-        {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
             </div>
         </div>
     )
