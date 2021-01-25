@@ -28,15 +28,15 @@ export default class AddOrg extends React.Component {
         className="w-1/3"
       >
         <div className="my-2">
-        <label className="mx-2 font-bold">Organization:</label>
+        <label className="mx-2 font-bold">Organization Name:</label>
         <input className="border p-1 rounded-lg" type="text" name="org-name" />
         </div>
         <div className="my-2">
-        <label className="mx-2 font-bold">URL:</label>
+        <label className="mx-2 font-bold">Organization Website:</label>
         <input className="border p-1 rounded-lg" type="url" name="url" />
         </div>
         <div className="my-2">
-        {status === "SUCCESS" ? <p>Thanks!</p> : <button className="border px-4 py-1 mt-4 rounded-lg shadow from-gray-200 bg-gradient-to-br to-gray-300">Submit</button>}
+        {status === "SUCCESS" ? <p>Thanks! We'll review this! </p> : <button className="border px-4 py-1 mt-4 rounded-lg shadow from-gray-200 bg-gradient-to-br to-gray-300">Submit</button>}
         {status === "ERROR" && <p>Ooops! There was an error.</p>}
         </div>
       </form>
