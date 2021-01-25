@@ -20,9 +20,6 @@ export default function App() {
                 <div className="xl:flex items-center"> 
                     <h1><Link to="/">DiversityOrgs.Tech</Link>
                 <span className="my-4 text-3xl font-thin"> - Find the tech community that's right for you.</span></h1>
-                    <small className="mx-3 border bg-green-400 rounded p-2">
-                    <Link to="/addorg">Add Organization</Link>
-                    </small>
                 </div>
           </div>
         </div>

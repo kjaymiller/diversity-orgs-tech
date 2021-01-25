@@ -13,6 +13,7 @@ def export_to_json():
             'Diversity and Inclusion Groups Local-Public List View.csv',
             keep_default_na=False,
             )
+    print(len(df))
     df['id'] = df.apply(lambda x:hash_id(x.Name + x.URL), axis=1) # create unique hash
     df.columns = df.columns.str.lower()
     df.columns = df.columns.str.replace(' ', '_', regex=True) # Convert column names to lowercase and underscores
