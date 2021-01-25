@@ -19,6 +19,7 @@ export default function Ethics() {
         <ul class="my-2">
         <li>Asian American</li>
         <li>BIPOC (Black and Indegenious People of Color)</li>
+        <li>Folks Experiencing Homelessness/Refugee Status</li>
         <li>Previously Incarcerated</li>
         <li>LGBTQIA+</li>
         <li>Latinx</li>
