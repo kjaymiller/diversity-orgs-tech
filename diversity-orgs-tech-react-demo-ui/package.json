@@ -13,8 +13,8 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "build:css": "postcss src/tailwind.css -o src/main.css",
-    "watch:css": "postcss src/tailwind.css -o src/main.css",
+    "build:css": "npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
+    "build:css": "npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
     "start": "npm run watch:css && react-scripts start",
     "start-dev": "npm-run-all -p watch-css start",
     "build-js": "node ./scripts/build-no-chunks.js",

@@ -4,8 +4,8 @@ module.exports = {
         enabled: true,
         mode: 'all',
         content: [
-        './src/**/*/*.jsx',
-        './src/**/*/*.js'
+        './src/**/*.jsx',
+        './src/**/*.js'
     ]
     },
     plugins: [
