@@ -7,7 +7,7 @@ import { appendClassName } from "@elastic/react-search-ui-views/lib/view-helpers
 function getFilterValueDisplay(filterValue) {
   if ([undefined, null, ''].includes(filterValue)) {
       console.log(filterValue)
-      return "Unknown";
+      return "N/A";
   }
   if (filterValue.hasOwnProperty("name")) return filterValue.name;
   return String(filterValue);

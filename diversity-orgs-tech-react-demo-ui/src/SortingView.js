@@ -10,28 +10,6 @@ const setDefaultStyle = {
 };
 
 function OrderCase(props) {
-  const orderImgStyle = {
-    display: "inline-block",
-    marginRight: "5px",
-    paddingBottom: "5px",
-    paddingLeft: "5px",
-    height: "25px"
-  };
-  const ascImage = (
-    <img
-      src= "/heroicons/optimized/outline/chevron-up.svg"
-      style={orderImgStyle}
-      alt="ascending-order"
-    />
-  );
-  const descImage = (
-    <img
-      src= "/heroicons/optimized/outline/chevron-down.svg"
-      style={orderImgStyle}
-      alt="descending-order"
-    />
-  );
-
   switch (props.value.split("|")[3]) {
     case "asc":
       return "(Ascending)";

@@ -19,64 +19,11 @@
     </noscript>
     <section>
       <div id="root" class="app-container"></div>
-    </section>
-    <section style="">
-        <!-- See more examples of how to use Formbutton at formspree.io/formbutton/docs -->
-          <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
-          <script>
-            window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-            formbutton("create", {
-                title: "Did We Miss Something?",
-                action: "https://formspree.io/f/mnqolonp",
-                buttonImg:"New",
-                description: "Tell us about any changes or additions that we need to include in our list. We'll get this update as fast as possible",
-                styles: {
-                  button: {
-                    backgroundColor: "#00bbee"
-                  },
-                  title: {
-                    background: "#444",
-                    paddingBottom: "5px",
-                    marginBottom: "10px"
-                  },
-                  description: {
-                    color: "#333",
-                    fontSize: "1.2em",
-                    background: "#fff"
-                  },
-                  label: {
-                    fontWeight: "bold"
-                  },
-                  input: {
-                    border: "1px #555 solid",
-                    padding: "8px",
-                    borderRadius: "5px"
-
-                    }
-                },
-                fields: [{
-                      name: "email",
-                      type: "email",
-                      label: "Your Email",
-                      required: true
-                    },
-                    {
-                      name: "organization",
-                      type: "text",
-                      label: "Organization in Question",
-                      required: true
-                    },
-                    {
-                      name: "Message",
-                      label: "How can we fix this",
-                      type: "textarea",
-                      required: false
-                    },
-                {
-                  type: "submit"
-                }]
-            })
-          </script>
+     <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+      <script>
+        window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+        formbutton("create", {action: "https://formspree.io/f/mnqolonp"})
+      </script>
     </section>
   </body>
 </html>

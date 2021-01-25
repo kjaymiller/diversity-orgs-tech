@@ -15,9 +15,23 @@ h1 {
     @apply text-gray-500;
     @apply p-2;
     @apply mb-2;
-    }
+}
 
 .resultCardTitle {
-   @apply my-3;
-   @apply text-lg;
-    }
+    @apply my-3;
+    @apply text-lg;
+}
+
+.sui-search-box__text-input {
+    @apply rounded-lg;
+    @apply shadow-lg;
+    @apply py-2 px-1;
+}
+
+.button.sui-search-box__submit {
+    background: None;
+    @apply bg-blue-400;
+    @apply shadow-lg;
+    @apply rounded-full;
+    @apply p-2;
+}
