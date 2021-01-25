@@ -73,7 +73,7 @@ function ResultView(props) {
 
     function parentOrg () { 
         if (props.result.parent_organization.snippet) {
-            return <small className="parentOrg mx-2">{props.result.parent_organization.snippet}</small>
+            return <small className="parentOrg mx-2">{props.result.parent_organization.raw}</small>
         }
         return ''
     }
