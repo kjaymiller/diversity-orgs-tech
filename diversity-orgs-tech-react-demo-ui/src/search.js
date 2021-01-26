@@ -82,19 +82,29 @@ function ResultView(props) {
         return field ? <small className="mx-2">{field}</small> : ''
     }
 
+    function meetup () {
+        if (props.result.meetup.raw) {
+            return <a href={props.result.meetup.raw}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>
+        }
+        return
+    }
+
     return (
         <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
             <div className="lg:w-1/4 w-1/4 lg:p-8">
                 <img 
                     src={props.result.organization_logo.raw}
-                    alt={parentOrg} Logo
+                    alt={props.result.name.raw} Logo
                 />
             </div>
             <div className="">
                 {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
                 {parentOrg()}
                 <h1 className="text-3xl my-3">{props.result.url.raw ? hasLink : noLink}</h1>
+            <div className="flex items-center">
                 {smallDivs(props.result.city.raw)}
+                {meetup()}
+            </div>
             </div>
         </div>
     )

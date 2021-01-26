@@ -13,12 +13,12 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "build:css": "npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
-    "watch:css": "npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
+    "build:css": "NODE_ENV=production && npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
+    "watch:css": "NODE_ENV=development && npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
     "start": "npm run watch:css && react-scripts start",
     "start-dev": "npm-run-all -p watch-css start",
     "build-js": "node ./scripts/build-no-chunks.js",
-    "build": "npm run build:css && npm react-scripts:build",
+    "build": "npm run build:css && npm run build-js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

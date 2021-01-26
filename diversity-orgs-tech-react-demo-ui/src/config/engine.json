@@ -5,16 +5,14 @@
   "querySuggestFields": ["title", "city", "diversity_focus", "parent_organization", "technology_focus"],
   "resultFields": [
     "twitter",
-    "notes",
     "city",
     "diversity_focus",
     "parent_organization",
     "name",
-    "region",
     "technology_focus",
     "url",
-    "id",
-    "organization_logo"
+    "organization_logo",
+    "meetup"
   ],
   "sortFields": [
     "city",
