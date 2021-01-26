@@ -86,7 +86,7 @@ function ResultView(props) {
         if (props.result.meetup.raw) {
             return <a href={props.result.meetup.raw}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>
         }
-        return
+        return ''
     }
 
     return (
