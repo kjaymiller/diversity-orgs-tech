@@ -12,7 +12,8 @@
     "technology_focus",
     "url",
     "organization_logo",
-    "meetup"
+    "meetup",
+    "global_org_url_from_parent_organization"
   ],
   "sortFields": [
     "city",

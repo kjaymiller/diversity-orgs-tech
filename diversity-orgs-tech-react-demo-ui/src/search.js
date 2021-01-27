@@ -71,8 +71,8 @@ function ResultView(props) {
     const noLink = props.result.name.raw
 
     function parentOrg () { 
-        if (props.result.parent_organization.snippet) {
-            return <small className="parentOrg mx-2">{props.result.parent_organization.raw}</small>
+        if (props?.result?.parent_organization?.snippet) {
+            return <small className="parentOrg mx-2"><a href={props.result?.global_org_url_from_parent_organization?.raw}>{props.result.parent_organization.raw}</a></small>
         }
 
         return ''
@@ -83,7 +83,7 @@ function ResultView(props) {
     }
 
     function meetup () {
-        if (props.result.meetup.snippet) {
+        if (props?.result?.meetup?.snippet) {
             return <a href={props.result.meetup.raw}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>
         }
         return ''
