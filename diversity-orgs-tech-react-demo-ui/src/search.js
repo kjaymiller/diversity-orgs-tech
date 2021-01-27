@@ -64,7 +64,6 @@ const config = {
 
 
 function ResultView(props) {
-    
     const hasLink = <a href={props.result.url.snippet}>
           {props.result.name.raw}
         </a>
@@ -75,6 +74,7 @@ function ResultView(props) {
         if (props.result.parent_organization.snippet) {
             return <small className="parentOrg mx-2">{props.result.parent_organization.raw}</small>
         }
+
         return ''
     }
 
@@ -83,7 +83,7 @@ function ResultView(props) {
     }
 
     function meetup () {
-        if (props.result.meetup.snippet) {
+        if (props.result.meetup) {
             return <a href={props.result.meetup.raw}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>
         }
         return ''
