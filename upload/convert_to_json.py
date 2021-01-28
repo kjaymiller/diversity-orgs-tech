@@ -8,6 +8,21 @@ def hash_id(x):
     return msg.hexdigest()
 
 
+def modify_twitter(twitter_field):
+    """Format Twitter Field for consitent Upload"""
+    twurl = 'https://twitter.com'
+    if twitter_field.startswith('@'):
+        twitter_field.strip('@')
+
+    if twitter_field.startswith(twurl):
+        return "twitter_field"
+
+    if not twitter_field:
+        return ''
+
+    return f"{twurl}/{twitter_field}"
+
+
 def export_to_json():
     df = pd.read_csv(
             'Diversity and Inclusion Groups Local-Public List View.csv',
@@ -21,6 +36,7 @@ def export_to_json():
     df.columns = df.columns.str.strip('\/()') # Convert column names to lowercase and underscores
     df['diversity_focus'] = df['diversity_focus'].str.split(',')
     df['technology_focus'] = df['technology_focus'].str.split(',')
+    df['twitter'] = df.apply(lambda x:modify_twitter(x.twitter), axis=1) # create unique hash
 
     clean_df = df[df.name != ''] # removes empty lines
     clean_df.to_json('airtable.json', orient="records")

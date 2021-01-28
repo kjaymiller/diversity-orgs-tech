@@ -64,7 +64,7 @@ const config = {
 
 
 function ResultView(props) {
-    const hasLink = <a href={props.result.url.snippet}>
+    const hasLink = <a href={props.result.url.raw}>
           {props.result.name.raw}
         </a>
 
@@ -89,6 +89,13 @@ function ResultView(props) {
         return ''
     }
 
+    function twitter () {
+        if (props?.result?.twitter?.snippet) {
+            return <a href={props.result.twitter.raw}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="w-6 rounded shadow" /></a>
+        }
+        return ''
+    }
+
     return (
         <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
             <div className="lg:w-1/4 w-1/4 lg:p-8">
@@ -104,6 +111,7 @@ function ResultView(props) {
             <div className="flex items-center">
                 {smallDivs(props.result.city.raw)}
                 {meetup()}
+                {twitter()}
             </div>
             </div>
         </div>
