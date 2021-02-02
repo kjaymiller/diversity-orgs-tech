@@ -259,3 +259,4 @@ cython_debug/
 .envrc
 airtable.json
 upload/*.html
+*.json
