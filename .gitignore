@@ -258,4 +258,4 @@ cython_debug/
 *.csv
 .envrc
 airtable.json
-upload/WomenWhoCodeNetworkList.html upload/girlsintechNetworkList.html
+upload/*.html
