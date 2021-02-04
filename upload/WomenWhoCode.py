@@ -6,10 +6,11 @@ import re
 import httpx
 
 from bs4 import BeautifulSoup
+url_root = 'https://womenwhocode.org'
 
 with open('upload/WomenWhoCodeNetworkList.html') as html_file:
     soup = BeautifulSoup(html_file.read(), 'html.parser')
-    location_section = soup.select('div > div')
+    location_section = soup.select('.network-box-wrapper')
 
 
 def delete_from_index():
@@ -24,36 +25,22 @@ def delete_from_index():
             body=ids
             )
             
-
-def remove_from_city(city):
-    """Strips 'Women Who Code' from the location city"""
-    if 'Women Who Code' in city.lower():
-        return re.sub(r'WWCode', '', city, re.I)
-    return city
-
-
-def generate_url(url_stem):
-    """generate a url based on conditions"""
-    return f"{wwc_root_url}{url_stem}"
-
-        
 def build_asset(location):
-    url_stem = location.select('.network-img-container a')[0]['href']
-    url = generate_url(url_stem)
-    city = remove_from_city(location.text.strip())
+    href = location.select('.network-img-container a')[0]['href']
+    url = f"{url_root}/{href}"
+    base_city = location.select('h3.network-name')[0].text.lstrip('WWCode')
+    region = location.select('p.network-country')[0].text
 
-    name_root = city.split(',')[0].strip()
-    name = 'Women Who Code ' + name_root 
-    logo = f"{wwc_root_url}{location.img['src'][2:]}"
-
+    city = f"{base_city}, {region}"
+    name = 'Women Who Code ' + base_city
     asset = {
             'name': name,
-            'organization_logo': logo,
+            'organization_logo': 'https://kjaymiller.s3-us-west-2.amazonaws.com/images/WWCode_logo_official.png',
             'city': city,
             'diversity_focus': ['Women in Tech'],
-            'technology_focus': ['General Technolofy'],
+            'technology_focus': ['General Technology'],
             'parent_organization': 'Women Who Code',
-            'global_org_url_from_parent_organization': wwc_root_url,
+            'global_org_url_from_parent_organization': 'https://womenwhocode.org',
             }
 
     asset['id'] = hash_id(name+ url)
@@ -70,9 +57,14 @@ def build_asset(location):
     return asset
 
 
-def test(value):
+def test(value = ''):
     locations = [build_asset(location) for location in location_section]
-    print(sorted([location.get(value, '') for location in locations], reverse=True))
+
+    if value:
+        print(sorted([location.get(value, '') for location in locations], reverse=True))
+
+    else:
+        print(locations)
 
 
 def run():
@@ -82,6 +74,6 @@ def run():
 
 
 if __name__ == '__main__':
-    # test('name') 
-    # run()
-    print(soup.prettify())
+    # test() 
+    run()
+    # print(soup.prettify())

@@ -64,11 +64,11 @@ const config = {
 
 
 function ResultView(props) {
-    const hasLink = <a href={props.result.url.raw}>
-          {props.result.name.raw}
+    const hasLink = <a href={props?.result?.url?.raw}>
+          {props?.result?.name?.raw}
         </a>
 
-    const noLink = props.result.name.raw
+    const noLink = props?.result?.name?.raw
 
     function parentOrg () { 
         if (props?.result?.parent_organization?.snippet) {
@@ -100,16 +100,16 @@ function ResultView(props) {
         <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
             <div className="lg:w-1/4 w-1/4 lg:p-8">
                 <img 
-                    src={props.result.organization_logo.raw}
-                    alt={props.result.name.raw} Logo
+                    src={props?.result?.organization_logo?.raw}
+                    alt={props?.result?.name?.raw} Logo
                 />
             </div>
             <div className="">
-                {props.result.diversity_focus.raw.map((o) => smallDivs(o))}
+                {props?.result?.diversity_focus?.raw.map((o) => smallDivs(o))}
                 {parentOrg()}
-                <h1 className="text-3xl my-3">{props.result.url.raw ? hasLink : noLink}</h1>
+                <h1 className="text-3xl my-3">{props?.result?.url?.raw ? hasLink : noLink}</h1>
             <div className="flex items-center">
-                {smallDivs(props.result.city.raw)}
+                {smallDivs(props?.result?.city?.raw)}
                 {meetup()}
                 {twitter()}
             </div>
