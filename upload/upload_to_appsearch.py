@@ -8,7 +8,7 @@ def upload_dict(data):
     for body in chunked(data, 100):
         app_search.index_documents(
                 engine_name=engine_name,
-                body=body,
+                documents=body,
                 )
 
 

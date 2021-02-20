@@ -20,11 +20,18 @@ export default function Home() {
                 </div>
                 <div className="my-3">
                     <h2 className="my-4 text-2xl font-thin"> Things you can search for:</h2>
-                    <div className="my-3 pl-4 text-xl font-bold">
-                        <h2 className="">City, State, Region</h2>
-                        <h2 className="">Under-Represented Group (See <Link className="underline" to="/ethics">the list</Link> of who is covered)</h2>
-                        <h2 className="">Technology or Stack</h2>
-                   </div>
+                    <div class="lg:flex justify-around">
+                        <div className="border-2 border-gray-300 my-3 p-4 text-xl font-bold">
+                            <h1 className="">City, State, Region</h1>
+                            <h2 className="">City, State, Region</h2>
+                        </div>
+                        <div className="border-2 border-gray-300 my-3 p-4 text-xl font-bold">
+                            <h2 className="">Under-Represented Group (See <Link className="underline" to="/ethics">the list</Link> of who is covered)</h2>
+                        </div>
+                        <div className="border-2 border-gray-300 my-3 p-4 text-xl font-bold">
+                            <h2 className="">Technology or Stack</h2>
+                        </div>
+                    </div>
                </div>
                 <Search />
             </div>

@@ -1,6 +1,8 @@
 from connection import app_search, engine_name
 from upload_to_appsearch import upload_dict
 from convert_to_json import hash_id
+from cleanup import delete_from_indexG
+
 
 import re
 import httpx
@@ -10,20 +12,6 @@ from bs4 import BeautifulSoup
 bit_chapters_page = httpx.get('https://foundation.blacksintechnology.net/chapters/')
 soup = BeautifulSoup(bit_chapters_page, 'html.parser')
 base_locations_wrapper = soup.select('.elementor-widget-wrap')
-
-
-def delete_from_index():
-    """delete previous PyLadies Entries"""
-    results = app_search.search(
-            engine_name=engine_name,
-            body={'query': 'Blacks in Techonolgy Foundation'},
-            )
-    ids = ([x['id']['raw'] for x in results['results']])
-    app_search.delete_documents(
-            engine_name=engine_name,
-            body=ids
-            )
-
 
 def get_locations():
     locations = []
@@ -49,6 +37,6 @@ def get_locations():
     return locations
 
 if __name__ == '__main__':
-    delete_from_index()
+    delete_from_index('Blacks in Technology Foundation')
     upload_dict(get_locations())
 

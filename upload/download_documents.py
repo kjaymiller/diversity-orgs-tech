@@ -14,5 +14,5 @@ if __name__ == '__main__':
             )['results']
         )
 
-    with open('diversityorgs.tech.202102011619.json', 'w') as json_file:
+    with open('diversityorgs.tech.json', 'w') as json_file:
         json.dump(documents, json_file)
