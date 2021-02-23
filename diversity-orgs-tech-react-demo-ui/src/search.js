@@ -95,6 +95,10 @@ function ResultView(props) {
                 if (link.includes('meetup.com')) {
                     links.push(<a href={link}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>)
                 }
+
+                if (link.includes('facebook.com')) {
+                    links.push(<a href={link}><img alt="facebook {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="w-6" /></a>)
+                }
             }
 
         }
