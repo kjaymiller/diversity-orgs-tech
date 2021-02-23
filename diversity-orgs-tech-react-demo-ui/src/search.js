@@ -82,22 +82,29 @@ function ResultView(props) {
         return field ? <small className="mx-2">{field}</small> : ''
     }
 
-    function meetup () {
-        if (props?.result?.meetup?.snippet) {
-            return <a href={props.result.meetup.raw}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>
+    function linkOption () {
+        const links = []
+        if (props?.result?.links?.raw){
+
+            for (let link of props?.result?.links?.raw) {
+
+                if (link.includes('twitter.com')) {
+                   links.push(<a href={link}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="w-6 rounded shadow" /></a>)
+                    }
+
+                if (link.includes('meetup.com')) {
+                    links.push(<a href={link}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>)
+                }
+            }
+
         }
-        return ''
+
+        console.log(props?.result)
+        return links
     }
 
-    function twitter () {
-        if (props?.result?.twitter?.snippet) {
-            return <a href={props.result.twitter.raw}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="w-6 rounded shadow" /></a>
-        }
-        return ''
-    }
 
-    return (
-        <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
+    return <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
             <div className="lg:w-1/4 w-1/4 lg:p-8">
                 <img 
                     src={props?.result?.organization_logo?.raw}
@@ -110,12 +117,10 @@ function ResultView(props) {
                 <h1 className="text-3xl my-3">{props?.result?.url?.raw ? hasLink : noLink}</h1>
             <div className="flex items-center">
                 {smallDivs(props?.result?.city?.raw)}
-                {meetup()}
-                {twitter()}
+                {linkOption()}
             </div>
             </div>
         </div>
-    )
 } 
 
 

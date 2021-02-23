@@ -28,7 +28,7 @@ def get_locations():
                 'name': f'Women Who Go - {base_name}',
                 'organization_logo':  'http://www.womenwhogo.org/assets/images/wwglogo.png',
                 'city': city.strip(),
-                'diversity_focus': ['Women in Tech'],
+                'diversity_focus': ['Women'],
                 'technology_focus': ['Go'],
                 'parent_organization': 'Women Who Go',
                 'global_org_url_from_parent_organization': 'https://womenwhogo.org',

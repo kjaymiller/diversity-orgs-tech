@@ -4,7 +4,7 @@
   "searchKey": "search-cbmv1uhj1s264nrvpsdpoehd",
   "querySuggestFields": ["name", "city", "diversity_focus", "parent_organization", "technology_focus"],
   "resultFields": [
-    "twitter",
+    "links",
     "city",
     "diversity_focus",
     "parent_organization",
@@ -12,7 +12,6 @@
     "technology_focus",
     "url",
     "organization_logo",
-    "meetup",
     "global_org_url_from_parent_organization"
   ],
   "sortFields": [

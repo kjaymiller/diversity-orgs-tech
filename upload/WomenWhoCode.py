@@ -1,30 +1,18 @@
 from connection import app_search, engine_name
 from upload_to_appsearch import upload_dict
 from convert_to_json import hash_id
+from cleanup import delete_from_index
 
 import re
 import httpx
 
 from bs4 import BeautifulSoup
-url_root = 'https://womenwhocode.org'
+url_root = 'https://womenwhocode.com'
 
 with open('upload/WomenWhoCodeNetworkList.html') as html_file:
     soup = BeautifulSoup(html_file.read(), 'html.parser')
     location_section = soup.select('.network-box-wrapper')
 
-
-def delete_from_index():
-    """delete previous Women Who Code Entries"""
-    results = app_search.search(
-            engine_name=engine_name,
-            body={'query': 'Women Who Code'},
-            )
-    ids = ([x['id']['raw'] for x in results['results']])
-    app_search.delete_documents(
-            engine_name=engine_name,
-            body=ids
-            )
-            
 def build_asset(location):
     href = location.select('.network-img-container a')[0]['href']
     url = f"{url_root}/{href}"
@@ -68,7 +56,7 @@ def test(value = ''):
 
 
 def run():
-    delete_from_index()
+    delete_from_index('Women Who Code')
     locations = [build_asset(location) for location in location_section]
     upload_dict(locations)
 
