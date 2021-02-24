@@ -5,9 +5,9 @@ import Search from './search.js';
 export default function Home() {
     return (
         <div className="text-gray-700 ">
-            <div className="bg-gradient-to-b from-indigo-100 p-2 container mx-auto">
+            <div className="p-2 container mx-auto">
                 <div className="flex items-center justify-between">
-                    <div className=" p-3 my-8 rounded-lg ">
+                    <div className="bg-gradient-to-b from-indigo-100 p-3 my-8 rounded-lg ">
                         <div className="w-1/2 pl-8">
                             <h1 className="text-5xl my-3 font-extralight text-gray-600 font-bold">You <span class="font-bold text-indigo-500 uppercase">belong</span></h1>
                             <div className="text-2xl p-2">

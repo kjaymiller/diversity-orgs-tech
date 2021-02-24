@@ -27,7 +27,7 @@ function _MultiCheckboxFacet({
 }) {
   return (
     <fieldset className={appendClassName("sui-facet", className)}>
-      <div className="xl:flex items-center justify-around px-3 text-lg">
+      <div className="xl:flex-1 items-center justify-around px-3 text-lg">
         {options.length < 1 && <div>No matching options</div>}
         {options.map(option => {
           return (
@@ -39,7 +39,7 @@ function _MultiCheckboxFacet({
               )}`}
             >
               <button 
-              className="border hover:text-gray-100 focus:text-gray-100 hover:font-bold focus:font-bold bg-gradient-to-br from-indigo-100 focus:to-blue-200 focus:from-indigo-500  hover:to-blue-200 hover:from-indigo-500  p-3 border-gray-200 rounded-lg"
+              className="border hover:text-gray-100 focus:text-gray-100 hover:font-bold focus:font-bold bg-gradient-to-br focus:to-blue-200 focus:from-indigo-500  hover:to-blue-200 hover:from-indigo-500  p-3 border-ingigo-200 my-4 rounded-lg"
               onClick={() =>
                     onSelect(option.value)
                   }
@@ -54,7 +54,7 @@ function _MultiCheckboxFacet({
       onClick = {() => 
         onRemove(options.value)
       }
-      className="h-7 px-2 focus:bg-red-200 border-gray-200 hover:bg-red-200"
+      className="text-sm h-1/3 rounded-xl p-2 border bg-gradient-to-br hover:from-pink-500 hover:to-red-200 from-gray-300"
       >Reset</button>
       </div>
 

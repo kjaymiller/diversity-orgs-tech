@@ -32,7 +32,7 @@ function MultiCheckboxFacet({
       {showSearch && (
         <div className="sui-facet-search">
           <input
-            className="capitalize sui-facet-search__text-input"
+            className="text-lg capitalize sui-facet-search__text-input"
             type="search"
             placeholder={searchPlaceholder.replace('_', ' ') || "Search"}
             onChange={e => {
