@@ -15,7 +15,7 @@ with open('upload/WomenWhoCodeNetworkList.html') as html_file:
 
 def build_asset(location):
     href = location.select('.network-img-container a')[0]['href']
-    url = f"{url_root}/{href}"
+    url = f"{url_root}{href}"
     base_city = location.select('h3.network-name')[0].text.lstrip('WWCode')
     region = location.select('p.network-country')[0].text
 
@@ -56,7 +56,6 @@ def test(value = ''):
 
 
 def run():
-    delete_from_index('Women Who Code')
     locations = [build_asset(location) for location in location_section]
     upload_dict(locations)
 

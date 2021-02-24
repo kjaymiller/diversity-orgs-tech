@@ -13,7 +13,7 @@ function getFilterValueDisplay(filterValue) {
   return String(filterValue);
 }
 
-function _MultiCheckboxFacet({
+function MultiCheckboxFacet({
   className,
   label,
   onMoreClick,
@@ -27,41 +27,61 @@ function _MultiCheckboxFacet({
 }) {
   return (
     <fieldset className={appendClassName("sui-facet", className)}>
-      <div className="xl:flex items-center justify-around px-3 text-lg">
+      <legend className="sui-facet__title">{label}</legend>
+
+      {showSearch && (
+        <div className="sui-facet-search">
+          <input
+            className="sui-facet-search__text-input"
+            type="search"
+            placeholder={searchPlaceholder || "Search"}
+            onChange={e => {
+              onSearch(e.target.value);
+            }}
+          />
+        </div>
+      )}
+
+      <div className="sui-multi-checkbox-facet">
         {options.length < 1 && <div>No matching options</div>}
         {options.map(option => {
+          const checked = option.selected;
           return (
             <label
-              className="m-3"
               key={`${getFilterValueDisplay(option.value)}`}
               htmlFor={`example_facet_${label}${getFilterValueDisplay(
                 option.value
               )}`}
+              className="sui-multi-checkbox-facet__option-label"
             >
-              <button 
-              className="border hover:text-gray-100 focus:text-gray-100 hover:font-bold focus:font-bold bg-gradient-to-br from-indigo-100 focus:to-blue-200 focus:from-indigo-500  hover:to-blue-200 hover:from-indigo-500  p-3 border-gray-200 rounded-lg"
-              onClick={() =>
-                    onSelect(option.value)
+              <div className="sui-multi-checkbox-facet__option-input-wrapper">
+                <input
+                  id={`example_facet_${label}${getFilterValueDisplay(
+                    option.value
+                  )}`}
+                  type="checkbox"
+                  className="sui-multi-checkbox-facet__checkbox"
+                  checked={checked}
+                  onChange={() =>
+                    checked ? onRemove(option.value) : onSelect(option.value)
                   }
-              >
+                />
+                <span className="sui-multi-checkbox-facet__input-text">
                   {getFilterValueDisplay(option.value)}
-
-              </button>
+                </span>
+              </div>
+              <span className="sui-multi-checkbox-facet__option-count">
+                {option.count.toLocaleString("en")}
+              </span>
             </label>
           );
         })}
-      <button 
-      onClick = {() => 
-        onRemove(options.value)
-      }
-      className="h-7 px-2 focus:bg-red-200 border-gray-200 hover:bg-red-200"
-      >Reset</button>
       </div>
 
       {showMore && (
         <button
           type="button"
-          className=""
+          className="sui-facet-view-more"
           onClick={onMoreClick}
           aria-label="Show more options"
         >
@@ -72,7 +92,7 @@ function _MultiCheckboxFacet({
   );
 }
 
-_MultiCheckboxFacet.propTypes = {
+MultiCheckboxFacet.propTypes = {
   label: PropTypes.string.isRequired,
   onMoreClick: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
@@ -85,4 +105,4 @@ _MultiCheckboxFacet.propTypes = {
   searchPlaceholder: PropTypes.string
 };
 
-export default _MultiCheckboxFacet;
+export default MultiCheckboxFacet;

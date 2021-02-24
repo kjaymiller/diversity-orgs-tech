@@ -26,7 +26,8 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
 
 import SortingView from './SortingView';
-import MultiCheckboxFacet from './FacetView';
+import _MultiCheckboxFacet from './FacetView';
+import MultiCheckboxFacet from './inlineFacetView';
 
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
 const connector = new AppSearchAPIConnector({
@@ -89,15 +90,15 @@ function ResultView(props) {
             for (let link of props?.result?.links?.raw) {
 
                 if (link.includes('twitter.com')) {
-                   links.push(<a href={link}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="w-6 rounded shadow" /></a>)
+                   links.push(<a href={link}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="mx-4 w-6 rounded shadow" /></a>)
                     }
 
                 if (link.includes('meetup.com')) {
-                    links.push(<a href={link}><img alt="meetup {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="w-6" /></a>)
+                    links.push(<a href={link}><img alt="meetup + {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="mx-4 w-6 rounded shadow" /></a>)
                 }
 
                 if (link.includes('facebook.com')) {
-                    links.push(<a href={link}><img alt="facebook {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="w-6" /></a>)
+                    links.push(<a href={link}><img alt="facebook {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
             }
 
@@ -108,7 +109,7 @@ function ResultView(props) {
     }
 
 
-    return <div className="lg:flex lg:jusitify-between items-center rounded-lg shadow-lg p-6">
+    return <div className="my-4 lg:flex lg:jusitify-between items-center rounded-lg shadow p-6">
             <div className="lg:w-1/4 w-1/4 lg:p-8">
                 <img 
                     src={props?.result?.organization_logo?.raw}
@@ -137,6 +138,12 @@ export default function Search() {
           return (
             <div className="App">
               <ErrorBoundary>
+                      <Facet
+                        field="parent_organization"
+                        label="Parent Organization"
+                        view={_MultiCheckboxFacet}
+                        isFilterable={false}
+                      />
                 <Layout
                   header={<SearchBox autocompleteSuggestions={true} />}
                   sideContent={
@@ -154,12 +161,6 @@ export default function Search() {
                         filterType="any"
                         view={MultiCheckboxFacet}
                         isFilterable={true}
-                      />
-                      <Facet
-                        field="parent_organization"
-                        label="Parent Organization"
-                        view={MultiCheckboxFacet}
-                        isFilterable={false}
                       />
                       <Facet
                         field="diversity_focus"
