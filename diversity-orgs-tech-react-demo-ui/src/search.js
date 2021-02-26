@@ -101,7 +101,7 @@ function ResultView(props) {
                     links.push(<a href={link}><img alt="facebook {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
 
-                if (link.includes('slack.com')) {
+                if (link.includes('slack')) {
                     links.push(<a href={link}><img alt="slack {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/slack.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
             }
