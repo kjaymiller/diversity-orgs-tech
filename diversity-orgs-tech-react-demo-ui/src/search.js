@@ -88,7 +88,7 @@ function ResultView(props) {
         if (props?.result?.links?.raw){
 
             for (let link of props?.result?.links?.raw) {
-
+                
                 if (link.includes('twitter.com')) {
                    links.push(<a href={link}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="mx-4 w-6 rounded shadow" /></a>)
                     }
@@ -100,12 +100,14 @@ function ResultView(props) {
                 if (link.includes('facebook.com')) {
                     links.push(<a href={link}><img alt="facebook {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
+
+                if (link.includes('slack.com')) {
+                    links.push(<a href={link}><img alt="slack {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/slack.png" className="mx-4 w-6 rounded shadow" /></a>)
+                }
             }
 
-        }
-
-        console.log(props?.result)
         return links
+        }
     }
 
 
@@ -116,8 +118,8 @@ function ResultView(props) {
                     alt={props?.result?.name?.raw} Logo
                 />
             </div>
-            <div className="">
-                {props?.result?.diversity_focus?.raw.map((o) => smallDivs(o))}
+            <div> 
+                {props?.result?.diversity_focus?.raw?.map((o) => smallDivs(o))}
                 {parentOrg()}
                 <h1 className="text-3xl my-3">{props?.result?.url?.raw ? hasLink : noLink}</h1>
             <div className="flex items-center">
@@ -126,10 +128,11 @@ function ResultView(props) {
             </div>
             </div>
         </div>
-} 
+    } 
 
 
 export default function Search() {
+
   return (
     <div className="container px-2 mx-auto my-4">
     <SearchProvider config={config}>
