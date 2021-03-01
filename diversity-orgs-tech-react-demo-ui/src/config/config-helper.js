@@ -130,6 +130,13 @@ export function buildSearchOptionsFromConfig() {
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
   searchOptions.search_fields = searchFields;
+
+  if (process.env.NODE_ENV != "prod") {
+    searchOptions.analytics = {tags: ['TEST']};
+  }
+  else { 
+    searchOptions.analytics = {tags: ['search']}
+    }
   return searchOptions;
 }
 
