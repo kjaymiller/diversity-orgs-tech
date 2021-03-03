@@ -131,11 +131,11 @@ export function buildSearchOptionsFromConfig() {
   searchOptions.result_fields = resultFields;
   searchOptions.search_fields = searchFields;
 
-  if (process.env.NODE_ENV != "prod") {
-    searchOptions.analytics = {tags: ['TEST']};
+  if (process.env.NODE_ENV == "production") {
+    searchOptions.analytics = {tags: ['search']}
   }
   else { 
-    searchOptions.analytics = {tags: ['search']}
+    searchOptions.analytics = {tags: ['TEST']};
     }
   return searchOptions;
 }
