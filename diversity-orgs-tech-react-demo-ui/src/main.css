@@ -828,6 +828,10 @@ video {
   padding-left: 2rem;
 }
 
+.static {
+  position: static;
+}
+
 * {
   --tw-shadow: 0 0 #0000;
 }
