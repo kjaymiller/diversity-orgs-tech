@@ -13,7 +13,7 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "build:css": "NODE_ENV=production && npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
+    "build:css": "NODE_ENV=prod && npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
     "watch:css": "NODE_ENV=development && npx tailwindcss-cli@latest build src/tailwind.css -o src/main.css",
     "start": "npm run watch:css && react-scripts start",
     "start-dev": "npm-run-all -p watch-css start",
