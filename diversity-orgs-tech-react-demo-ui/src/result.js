@@ -35,7 +35,7 @@ function Result(
             links.push(<a href={donate}>
                    <img
                     className="mx-4 w-6 font-green-200 stroke-current rounded shadow"
-                    src="/heroicons/optimized/outline/currency-dollar.svg"
+                    src="/currency-dollar.svg"
  alt={donateAlt}/> 
                 </a>)
 
