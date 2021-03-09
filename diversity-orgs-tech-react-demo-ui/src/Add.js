@@ -30,7 +30,7 @@ export default class AddOrg extends React.Component {
       >
         <div className="my-2">
         <label className="mx-2 font-bold">Email:</label>
-        <input className="lg:w-1/2 text-sm border p-1 rounded-lg" placeholder="me@example.com" type="email" name="org-name" />
+        <input className="lg:w-1/2 text-sm border p-1 rounded-lg" placeholder="me@example.com" type="email" user_email="org-name" />
             <div>
                 <small className="italic mx-3 my-2 p-2">This email is only used to notify you if we have questions and is entirely optional</small>
             </div>
@@ -48,7 +48,7 @@ export default class AddOrg extends React.Component {
                 <label  className="mx-2 font-bold">Comments:</label>
             </div>
             <div>
-                <textarea cols="80" className="mx-4 text-sm border p-2 rounded-lg" placeholder="Any information that you can to help us make the correct change" name="url" />
+                <textarea cols="80" className="mx-4 text-sm border p-2 rounded-lg" placeholder="Any information that you can to help us make the correct change" name="comments" />
             </div>
         </div>
         <div className="my-2">

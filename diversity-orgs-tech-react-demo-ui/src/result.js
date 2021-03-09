@@ -26,25 +26,45 @@ function Result(
     }
 
     function linkOption () {
-        const links = []
+        const links = [];
+        const name = props?.result?.name?.raw;
+
+        if (props?.result?.donate?.raw) {
+            const donate = props?.result?.donate?.raw;
+            const donateAlt = "donate" + name;
+            links.push(<a href={donate}>
+                   <img
+                    className="mx-4 w-6 font-green-200 stroke-current rounded shadow"
+                    src="/heroicons/optimized/outline/currency-dollar.svg"
+ alt={donateAlt}/> 
+                </a>)
+
+        }
+
         if (props?.result?.links?.raw){
 
             for (let link of props?.result?.links?.raw) {
                 
                 if (link.includes('twitter.com')) {
-                   links.push(<a href={link}><img alt="twitter {props.result.name.raw}" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/Twitter_icon_square_logo.jpg" className="mx-4 w-6 rounded shadow" /></a>)
+                    const twAlt = "twitter " + name;
+                   links.push(<a href={link}><img alt={twAlt} src="https://ik.imagekit.io/cxazzw3yew/Twitter_icon_square_logo.jpg" className="mx-4 w-6 rounded shadow" /></a>)
                     }
 
                 if (link.includes('meetup.com')) {
-                    links.push(<a href={link}><img alt="meetup + {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/meetup-logo-m-swarm-thumb.jpg" className="mx-4 w-6 rounded shadow" /></a>)
+                    links.push(<a href={link}><img alt="meetup + {props.result.name.raw}" className="mx-4" src="https://ik.imagekit.io/cxazzw3yew/meetup-logo-m-swarm-thumb.jpg" className="mx-4 w-6 rounded shadow" /></a>)
                 }
 
                 if (link.includes('facebook.com')) {
-                    links.push(<a href={link}><img alt="facebook {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/1-facebook-colored-svg-copy-256.png" className="mx-4 w-6 rounded shadow" /></a>)
+                    links.push(<a href={link}><img alt="facebook {props.result.name.raw}" className="mx-4" src="https://ik.imagekit.io/cxazzw3yew/1-facebook-colored-svg-copy-256.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
 
+                if (link.includes('linkedin.com')) {
+                    links.push(<a href={link}><img alt="linkedin {props.result.name.raw}" className="mx-4" src="https://ik.imagekit.io/cxazzw3yew/LinkedIn_icon_square_logo.jpg" className="mx-4 w-6 rounded shadow" /></a>)
+                }
+
+
                 if (link.includes('slack')) {
-                    links.push(<a href={link}><img alt="slack {props.result.name.raw}" className="mx-4" src="https://kjaymiller.s3-us-west-2.amazonaws.com/images/slack.png" className="mx-4 w-6 rounded shadow" /></a>)
+                    links.push(<a href={link}><img alt="slack {props.result.name.raw}" className="mx-4" src="https://ik.imagekit.io/cxazzw3yew/slack.png" className="mx-4 w-6 rounded shadow" /></a>)
                 }
             }
 
