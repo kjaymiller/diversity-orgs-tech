@@ -1,10 +1,10 @@
 import json
-import pathlib
 
 import typer
-from connection import app_search, engine_name
 from convert_to_json import hash_id
 from more_itertools import chunked
+
+from connection import app_search, engine_name
 
 
 def upload_dict(data):

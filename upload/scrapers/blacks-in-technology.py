@@ -1,7 +1,8 @@
 import httpx
 from bs4 import BeautifulSoup
-from cleanup import delete_from_index
 from convert_to_json import hash_id
+
+from cleanup import delete_from_index
 from upload_to_appsearch import upload_dict
 
 bit_chapters_page = httpx.get("https://foundation.blacksintechnology.net/chapters/")

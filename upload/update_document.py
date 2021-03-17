@@ -1,6 +1,7 @@
 import json
 
 import typer
+
 from connection import app_search, engine_name
 
 
