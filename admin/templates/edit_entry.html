@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block content %} {% with messages =
+get_flashed_messages() %} {% if messages %} {% for message in messages %}
+<span class="rounded p-2 bg-green-300">{{ message }}</span>
+{% endfor %} {% endif %} {% endwith %}
+
+<form class="w-1/2" action="/edit/{{results.id}}" method="post">
+  <input class="hidden" name="id" value="{{results['id']}}" />
+  <div class="my-2">
+    <label class="font-bold" for="name">Name:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="name"
+      value="{{results['name']}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="diversity_focus">Diversity Focus:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="diversity_focus"
+      value="{{','.join(results['diversity_focus'])}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="technology_focus">Technology Focus:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="technology_focus"
+      value="{{','.join(results['technology_focus'])}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="parent_organization"
+      >Parent Organization:</label
+    >
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="parent_organization"
+      value="{{results['parent_organization']}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="city">City:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="city"
+      value="{{results['city']}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="links">Links:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="links"
+      value="{{','.join(results['links'])}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="url">URL:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="url"
+      value="{{results['url']}}"
+    />
+  </div>
+  <div class="my-2">
+    <label class="font-bold" for="donate">Donate URL:</label>
+    <input
+      class="rounded border px-1 w-full"
+      type="text"
+      name="donate"
+      value="{{results['donate']}}"
+    />
+  </div>
+  <div class="my-2">
+    <label for="organization_logo">Organization Logo</label>
+    <input
+      type="text"
+      name="organization_logo"
+      value="{{results['organization_logo']}}"
+    />
+  </div>
+  <div class="flex justify-between">
+    <input type="submit" class="p-2 rounded-lg bg-blue-300" />
+    <a
+      href="/delete/{{results['id']}}"
+      class="p-2 bg-red-500 rounded-lg text-white"
+      >Delete</a
+    >
+  </div>
+</form>
+{% endblock %}

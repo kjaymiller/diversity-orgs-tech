@@ -1,7 +1,6 @@
 import json
 
 import typer
-from convert_to_json import hash_id
 from more_itertools import chunked
 
 from connection import app_search, engine_name

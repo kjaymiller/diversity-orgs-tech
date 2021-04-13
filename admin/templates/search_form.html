@@ -1,0 +1,12 @@
+<form action="/search" class="w-full">
+  <div class="flex">
+    {% if not query %} {% set query = 'Search' %} {% endif %}
+    <input
+      name="query"
+      class="rounded-xl p-2 mx-3 border w-3/4"
+      type="text"
+      placeholder="{{query}}"
+    />
+    <button class="p-2 bg-purple-300 rounded-xl shadow">Search</button>
+  </div>
+</form>

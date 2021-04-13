@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %} {% include 'search_form.html' %}
+<small class="italic">
+  Showing {{meta['page']['total_results']}} results from "{{query}}"
+</small>
+
+{% for entry in results %}
+<div class="border rounded my-3 p-2 flex items-center">
+  <div class="w-1/4">
+    <img
+      class="max-w-full"
+      src="{{entry.get('organization_logo', {}).get('raw')}}"
+    />
+  </div>
+  <div>
+    <h2><a href="/edit/{{entry.id['raw']}}">{{entry.name['raw']}}</a></h2>
+    <small><a href="/edit/{{entry.id['raw']}}">{{entry.id['raw']}}</a></small>
+  </div>
+</div>
+{% endfor %} {% endblock %} {% if meta['page']['total_results'] > 50 %}
+<div>page {{meta['page']}} of {{meta['page']['total_pages']}}</div>
+{% endif %}

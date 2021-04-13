@@ -26,16 +26,22 @@ certifi==2020.12.5
     #   httpx
 cffi==1.14.5
     # via argon2-cffi
-decorator==4.4.2
+click==7.1.2
+    # via flask
+darglint==1.8.0
+    # via -r requirements.in
+decorator==5.0.6
     # via ipython
 defusedxml==0.7.1
     # via nbconvert
-elastic-enterprise-search==7.11.0
+elastic-enterprise-search==7.12.0
     # via -r requirements.in
-elastic-transport==7.11.0
+elastic-transport==7.12.0
     # via elastic-enterprise-search
 entrypoints==0.3
     # via nbconvert
+flask==1.1.2
+    # via -r requirements.in
 fuzzywuzzy==0.18.0
     # via -r requirements.in
 h11==0.12.0
@@ -46,7 +52,7 @@ httpx==0.17.1
     # via -r requirements.in
 idna==3.1
     # via rfc3986
-ipykernel==5.5.0
+ipykernel==5.5.3
     # via
     #   ipywidgets
     #   jupyter
@@ -59,17 +65,20 @@ ipython-genutils==0.2.0
     #   notebook
     #   qtconsole
     #   traitlets
-ipython==7.21.0
+ipython==7.22.0
     # via
     #   ipykernel
     #   ipywidgets
     #   jupyter-console
 ipywidgets==7.6.3
     # via jupyter
+itsdangerous==1.1.0
+    # via flask
 jedi==0.18.0
     # via ipython
 jinja2==2.11.3
     # via
+    #   flask
     #   nbconvert
     #   notebook
 jsonschema==3.2.0
@@ -81,7 +90,7 @@ jupyter-client==6.1.12
     #   nbclient
     #   notebook
     #   qtconsole
-jupyter-console==6.2.0
+jupyter-console==6.4.0
     # via jupyter
 jupyter-core==4.7.1
     # via
@@ -106,7 +115,7 @@ nbconvert==6.0.7
     # via
     #   jupyter
     #   notebook
-nbformat==5.1.2
+nbformat==5.1.3
     # via
     #   ipywidgets
     #   nbclient
@@ -114,27 +123,27 @@ nbformat==5.1.2
     #   notebook
 nest-asyncio==1.5.1
     # via nbclient
-notebook==6.2.0
+notebook==6.3.0
     # via
     #   jupyter
     #   widgetsnbextension
-numpy==1.20.1
+numpy==1.20.2
     # via pandas
 packaging==20.9
     # via bleach
-pandas==1.2.3
+pandas==1.2.4
     # via -r requirements.in
 pandocfilters==1.4.3
     # via nbconvert
-parso==0.8.1
+parso==0.8.2
     # via jedi
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
-prometheus-client==0.9.0
+prometheus-client==0.10.1
     # via notebook
-prompt-toolkit==3.0.17
+prompt-toolkit==3.0.18
     # via
     #   ipython
     #   jupyter-console
@@ -169,7 +178,7 @@ pyzmq==22.0.3
     #   jupyter-client
     #   notebook
     #   qtconsole
-qtconsole==5.0.2
+qtconsole==5.0.3
     # via jupyter
 qtpy==1.9.0
     # via qtconsole
@@ -189,9 +198,9 @@ sniffio==1.2.0
     # via
     #   httpcore
     #   httpx
-soupsieve==2.2
+soupsieve==2.2.1
     # via beautifulsoup4
-terminado==0.9.3
+terminado==0.9.4
     # via notebook
 testpath==0.4.4
     # via nbconvert
@@ -219,6 +228,8 @@ wcwidth==0.2.5
     # via prompt-toolkit
 webencodings==0.5.1
     # via bleach
+werkzeug==1.0.1
+    # via flask
 widgetsnbextension==3.5.1
     # via ipywidgets
 

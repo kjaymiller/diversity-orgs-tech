@@ -260,3 +260,4 @@ cython_debug/
 airtable.json
 upload/*.html
 *.json
+.nova
