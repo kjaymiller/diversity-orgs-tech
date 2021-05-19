@@ -3,7 +3,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
 <span class="rounded p-2 bg-green-300">{{ message }}</span>
 {% endfor %} {% endif %} {% endwith %}
 
-<form class="w-1/2" action="/edit/{{results.id}}" method="post">
+<form class="w-1/2" action="/{{form_path}}/{{results.id}}" method="post">
   <input class="hidden" name="id" value="{{results['id']}}" />
   <div class="my-2">
     <label class="font-bold" for="name">Name:</label>
@@ -82,6 +82,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
   <div class="my-2">
     <label for="organization_logo">Organization Logo</label>
     <input
+      class="rounded border px-1 w-full"
       type="text"
       name="organization_logo"
       value="{{results['organization_logo']}}"

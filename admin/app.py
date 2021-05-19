@@ -6,6 +6,9 @@ from flask import Flask, flash, render_template, request
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
 
+def cleanup(form_data):
+    """Helper Function to strip out empty field values"""
+    return {key:val for key,val in form_data.items() if val} 
 
 @app.route("/")
 def index():
@@ -18,6 +21,7 @@ def search():
     body = {"query": q, "analytics": {"tags": ["admin"]}, "page": {"size": 50}}
     response = app_search.search(engine_name, body=body)
     meta, results = response.values()
+    print(results)
     return render_template(
         "search.html",
         meta=meta,
@@ -26,17 +30,17 @@ def search():
     )
 
 
-@app.route("/create",  methods=["GET", "POST"])
+@app.route("/create/",  methods=["GET", "POST"])
 def create_entry():
     if request.method == "POST":
         form_data = dict(request.form)
 
         for field in ["technology_focus", "diversity_focus", "links"]:
-            form_data[field] = form_data[field].split(",")
-
-        meta, results = app_search.index_documents(
+            form_data[field] = form_data[field].split(", ")
+            
+        results = app_search.index_documents(
             engine_name=engine_name,
-            documents=[form_data],
+            documents=[cleanup(form_data)],
             params={
                 "analytics": {"tags": ["admin"]},
             },
@@ -44,9 +48,11 @@ def create_entry():
 
     else:
         results = {}
+        
     return render_template(
         "edit_entry.html",
         results=results,
+        form_path="create",
     )
 
 
@@ -57,7 +63,7 @@ def view_entry(_id):
         form_data = dict(request.form)
 
         for field in ["technology_focus", "diversity_focus", "links"]:
-            form_data[field] = form_data[field].split(",")
+            form_data[field] = form_data[field].split(", ")
 
         app_search.index_documents(
             engine_name=engine_name,
@@ -82,6 +88,7 @@ def view_entry(_id):
     return render_template(
         "edit_entry.html",
         results=results,
+        form_path="edit",
     )
 
 
