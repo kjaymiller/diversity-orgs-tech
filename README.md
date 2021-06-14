@@ -3,10 +3,9 @@
 Create a way that under-represented folks can find tech groups catering to intentional diversity growth.
 
 ## Want to Add an Organization to This?
-Have an Orginazation you would like added? Read our <#Organization Guidelines> and submitan issue
+Have an Orginazation you would like added? Read our <#Organization Guidelines> and submit an issue
 
-## Want to Sponsor this project
-
+### [Sponsor this project](https://github.com/sponsors/kjaymiller)
 
 # Tech Stack:
 - **Admin**: [Flask](https://flask.palletsprojects.com/en/2.0.x/)
