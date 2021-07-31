@@ -76,12 +76,6 @@ export default function Search() {
           return (
             <div className="App">
               <ErrorBoundary>
-                      <Facet
-                        field="parent_organization"
-                        label="Parent Organization"
-                        view={_MultiCheckboxFacet}
-                        isFilterable={false}
-                      />
                 <Layout
                   header={<SearchBox autocompleteSuggestions={true} />}
                   sideContent={
@@ -93,6 +87,12 @@ export default function Search() {
                           view={SortingView}
                         />
                       )}
+                      <Facet
+                        field="parent_organization"
+                        label="Parent Organization"
+                        view={MultiCheckboxFacet}
+                        isFilterable={true}
+                      />
                       <Facet
                         field="city"
                         label="City"

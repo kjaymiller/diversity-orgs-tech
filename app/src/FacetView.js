@@ -27,7 +27,7 @@ function _MultiCheckboxFacet({
 }) {
   return (
     <fieldset className={appendClassName("sui-facet", className)}>
-      <div className="xl:flex-1 items-center justify-around px-3 text-lg">
+      <div className="xl:flex-1 items-center justify-around px-3">
         {options.length < 1 && <div>No matching options</div>}
         {options.map(option => {
           return (

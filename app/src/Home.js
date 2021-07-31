@@ -21,15 +21,15 @@ export default function Home() {
                     </div>
                </div>
                 <div className="my-3">
-                    <h2 className="my-4 text-2xl font-thin"> Things you can search for:</h2>
+                    <h2 className="my-4 text-2xl font-thin"> Search for:</h2>
                     <div class="lg:flex justify-around">
-                        <div className="rounded-lg bg-gray-100 my-3 p-4 text-xl font-light">
+                        <div className="rounded-lg bg-gray-50 my-3 p-4 font-light">
                             <h2 className="">City, State, Region</h2>
                         </div>
-                        <div className="rounded-lg bg-gray-100 my-3 p-4 text-xl font-light">
+                        <div className="rounded-lg bg-gray-50 my-3 p-4 font-light">
                             <h2 className="">Under-Represented Group (See <Link className="underline" to="/ethics">the list</Link> of who is covered)</h2>
                         </div>
-                        <div className="rounded-lg bg-gray-100 my-3 p-4 text-xl font-light">
+                        <div className="rounded-lg bg-gray-50 my-3 p-4 font-light">
                             <h2 className="">Technology or Stack</h2>
                         </div>
                     </div>
