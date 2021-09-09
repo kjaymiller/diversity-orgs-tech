@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Ethics() {
   return (
-    <div className="container mx-auto">
+    <div className="container sm:mx-5 mx-auto">
       <h1 className="text-5xl my-5 font-extralight">
         The Ethics Behind this Site
       </h1>
@@ -48,14 +48,14 @@ export default function Ethics() {
       </p>
       <h3>Here are some representation segments that I'm covering:</h3>
       <ul class="my-2">
-        <li>Asian American Pacific Islander</li>
-        <li>Black/Indegenious People of Color</li>
-        <li>Folks Experiencing Homelessness/Refugee Status</li>
-        <li>Previously Incarcerated</li>
-        <li>LGBTQIA+</li>
-        <li>Latinx</li>
-        <li>Members of a Minority Religious Group</li>
-        <li>Women in Tech</li>
+        <li class="font-bold">Asian American Pacific Islander</li>
+        <li class="font-bold">Black/Indegenious People of Color</li>
+        <li class="font-bold">Folks Experiencing Homelessness/Refugee Status</li>
+        <li class="font-bold">Previously Incarcerated</li>
+        <li class="font-bold">LGBTQIA+</li>
+        <li class="font-bold">Latinx</li>
+        <li class="font-bold">Members of a Minority Religious Group</li>
+        <li class="font-bold">Women in Tech</li>
       </ul>
       <p className="my-3">
         If there is a group missing, apologies. Feel free to let us know using
