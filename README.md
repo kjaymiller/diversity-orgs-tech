@@ -33,7 +33,7 @@ These groups can focus on any technology discipline (including general technolog
 That's wonderful and I would hope that's the case for all tech spaces. The focus here is not for the organization but for the individual. They may want to find a group and community of folks like them and this is to aid in that discovery. If you would still like to support this project and have your organization included please consider sponsoring this project at the $20+/month or $1000/one-time rate and your name will be added to the projects README.
 
 ## License
-This project is [MIT Licensed](/LICENSE.md)
+This project is [MIT Licensed](/LICENSE.txt)
 
 ## Company Sponsors
 - [Elastic](Elastic.co)
