@@ -40,7 +40,6 @@ This project is [MIT Licensed](/LICENSE.txt)
  
 ## Personal Sponsors
 Github Sponsors at $20/month and Higher!
-- Brian Douglas
-- Anthony Shaw
-- Carol Willing
-- Jason Brechin
+- [Brian Douglas](https://github.com/bdougieyo)
+- [Carol Willing](https://github.com/carolwilling)
+- [Jason Brechin](https://github.com/brechin)
