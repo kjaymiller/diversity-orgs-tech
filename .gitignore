@@ -261,3 +261,5 @@ airtable.json
 upload/*.html
 *.json
 .nova
+credentials*
+.direnv
