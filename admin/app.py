@@ -2,6 +2,7 @@ import os
 
 from connection import app_search, engine_name
 from flask import Flask, flash, render_template, request
+from city_mapper import city_search
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
@@ -34,7 +35,8 @@ def search():
 def create_entry():
     if request.method == "POST":
         form_data = dict(request.form)
-
+        form_data = city_search(form_data)
+        
         for field in ["technology_focus", "diversity_focus", "links"]:
             form_data[field] = form_data[field].split(", ")
             
@@ -46,14 +48,15 @@ def create_entry():
             },
         )
 
+        return redirect("/")
     else:
         results = {}
         
-    return render_template(
+        return render_template(
         "edit_entry.html",
         results=results,
         form_path="create",
-    )
+        )
 
 
 @app.route("/edit/<_id>", methods=["GET", "POST"])

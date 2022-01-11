@@ -1,6 +1,7 @@
 jupyter
 beautifulsoup4
 elastic-enterprise-search
+elasticsearch
 httpx
 fuzzywuzzy
 pandas

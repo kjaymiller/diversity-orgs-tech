@@ -8,7 +8,6 @@ import os
 gmaps = googlemaps.Client(key=os.environ.get("GMAPS_KEY"))
 es_index = "cities_helper"
 
-
 def clean_spaces(s):
     """removes double spaces in text"""
     return s.replace("  ", " ")
@@ -143,8 +142,8 @@ if __name__ == "__main__":
     # create_index()
     buckets = load_documents("diversityorgs.tech.json")
     # gv = buckets['Greenville, SC, USA']
-    for doc in gv:
-        update_single_doc(doc)
+    # for doc in gv:
+    #    update_single_doc(doc)
         
     # for docs in buckets:
     #     city_search_gen(buckets[docs])

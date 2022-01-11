@@ -13,7 +13,7 @@ export default function App() {
           <div className="container my-3 mx-auto">
             <div className="xl:flex items-center">
               <h1 className="px-4">
-                <Link to="/">DiversityOrgs.Tech</Link>
+                <Link to="/">TechDiversityOrgs.com</Link>
               </h1>
               <h2 className="mx-4 p-4 text-3xl font-thin">
                 Find the tech community that's right for you.
