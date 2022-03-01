@@ -1,11 +1,5 @@
-jupyter
 beautifulsoup4
-elastic-enterprise-search
 elasticsearch
-httpx
 googlemaps
-fuzzywuzzy
-pandas
-darglint
 flask
-more-itertools
+typer
