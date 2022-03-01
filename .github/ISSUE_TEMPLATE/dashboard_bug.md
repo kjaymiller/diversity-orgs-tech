@@ -1,8 +1,9 @@
 ---
 name: Dashboard Report
-description: File a bug report
+description: File an issue with the Dashboard
 title: "[Dashboard]: "
 labels: ["dashboard"]
+about: "Report an Issue with the Dashboard"
 ---
 
 <This is for the Elastic Community Team Members to Report issues on our Dashboard>
