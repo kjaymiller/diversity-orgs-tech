@@ -25,6 +25,7 @@ assignees: ''
 
 ### Diversity Focuses: (Check All that Apply)
 <If all apply leave blank>
+  
 - [ ] Asian American Pacific Islander (AAPI)
 - [ ] Black
 - [ ] First Nations/Indigenous Peoples
