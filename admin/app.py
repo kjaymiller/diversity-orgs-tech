@@ -1,31 +1,61 @@
 import os
+import re
+import typing
 
-from connection import app_search, engine_name
-from flask import Flask, flash, render_template, request
-from city_mapper import city_search
+
+from connection import  elastic_search
+from flask import Flask, flash, redirect, render_template, request
+from city_search import city_search
+from social_check import social_check
+
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
+es_index = os.environ.get("ES_INDEX")
+
 
 def cleanup(form_data):
     """Helper Function to strip out empty field values"""
     return {key:val for key,val in form_data.items() if val} 
 
+
+def format_form(form_data: dict[str, str]) -> dict[str, typing.Any]:
+    """
+    Helper function to format the form data for display
+    """
+    
+    doc = city_search(
+            es_index=os.environ.get('CITIES_INDEX'),
+            document=form_data,
+    )
+    
+    for field in ["technology_focus", "diversity_focus"]:
+        doc[field] = re.split(r'\, *', doc[field])
+    
+    links = re.split(r'\, *', form_data['links'])
+    
+    for link in links:
+        doc.update(social_check(link))
+    
+    return doc
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
 @app.route("/search")
 def search():
     q = request.args.get("query")
-    body = {"query": q, "analytics": {"tags": ["admin"]}, "page": {"size": 50}}
-    response = app_search.search(engine_name, body=body)
-    meta, results = response.values()
-    print(results)
+    query = {
+        "multi_match": {
+            "type": "best_fields",
+            "query": q,
+         }
+    }
+    results = elastic_search.search(index=es_index, query=query, size=1000)
     return render_template(
         "search.html",
-        meta=meta,
         results=results,
         query=q,
     )
@@ -35,25 +65,20 @@ def search():
 def create_entry():
     if request.method == "POST":
         form_data = dict(request.form)
-        form_data = city_search(form_data)
-        
-        for field in ["technology_focus", "diversity_focus", "links"]:
-            form_data[field] = form_data[field].split(", ")
-            
-        results = app_search.index_documents(
-            engine_name=engine_name,
-            documents=[cleanup(form_data)],
-            params={
-                "analytics": {"tags": ["admin"]},
-            },
+        doc = format_form(form_data)
+        results = elastic_search.index(
+            index=es_index,
+            document=cleanup(doc),
         )
+        flash(f"{doc['name']} created")
 
         return redirect("/")
+
     else:
         results = {}
         
         return render_template(
-        "edit_entry.html",
+        "create_entry.html",
         results=results,
         form_path="create",
         )
@@ -64,49 +89,37 @@ def view_entry(_id):
 
     if request.method == "POST":
         form_data = dict(request.form)
-
-        for field in ["technology_focus", "diversity_focus", "links"]:
-            form_data[field] = form_data[field].split(", ")
-
-        app_search.index_documents(
-            engine_name=engine_name,
-            documents=[form_data],
-            params={
-                "analytics": {"tags": ["admin"]},
-            },
+        doc = format_form(form_data)
+        elastic_search.index(
+            index=es_index,
+            id=_id,
+            document=cleanup(doc),
+            refresh=True,
         )
 
         flash(f"{form_data['name']} updated!")
-        results = form_data
+        return redirect(f"/edit/{_id}")
 
     else:
-        response = app_search.get_documents(
-            engine_name=engine_name,
-            document_ids=[_id],
-            params={
-                "analytics": {"tags": ["admin"]},
-            },
+        results = elastic_search.get(
+            index=es_index,
+            id=_id,
         )
-        results = response[0]  # only returning one entry
-    return render_template(
-        "edit_entry.html",
-        results=results,
-        form_path="edit",
-    )
+        return render_template(
+            "edit_entry.html",
+            results=results,
+            form_path="edit",
+        )
 
 
 @app.route("/delete/<_id>")
 def delete_documents(_id):
-    response = app_search.delete_documents(
-        engine_name=engine_name,
-        document_ids=[_id],
-        params={
-            "analytics": {"tags": ["admin"]},
-        },
+    response = elastic_search.delete(
+        index=es_index,
+        document=_id,
     )
     flash(f"{_id} Successfully Deleted")
-    results = response[0]  # only returning one entry
-
+    
     return render_template(
         "index.html",
         results=results,

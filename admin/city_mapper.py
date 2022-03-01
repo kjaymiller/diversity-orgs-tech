@@ -1,71 +1,51 @@
-import googlemaps
 import json
-from more_itertools import bucket, first_true
-from pathlib import Path
-from connection import elastic_search, app_search
+import logging
 import os
+import typing
+from operator import index
+from pathlib import Path
 
-gmaps = googlemaps.Client(key=os.environ.get("GMAPS_KEY"))
-es_index = "cities_helper"
+import googlemaps
+from elasticsearch.helpers import bulk
+from more_itertools import bucket, first_true
+import typer
 
-def clean_spaces(s):
-    """removes double spaces in text"""
-    return s.replace("  ", " ")
-
-def load_documents(json_file: str):
-    """Reads the json_file and returns the objects bucketed by city"""
-    return bucket(json.loads(Path(json_file).read_text()), key=lambda x:x['city'])
-
-class City:
-    def __init__(self, query):
-        self.base_query = query
-
-        geocode_results = gmaps.places_autocomplete(
-            input_text=query,
-            types=["(cities)", "locality"]
-        )
-        
-        place_id = first_true(
-            geocode_results,
-            pred=lambda x:'locality' in x['types']
-        )['place_id']
-        
-        city = gmaps.place(
-                place_id,
-                fields=[
-                    "type",
-                    "geometry",
-                    "name", "address_component",
-                ]
-        )
-        
-        if len(city["result"]["address_components"]) < 4: # Country and Not City
-            self.region_short_name = ""
-            self.region_long_name = ""
-            self.country_long_name = clean_spaces(city['result']["address_components"][1]["long_name"])
-            self.country_short_name = clean_spaces(city['result']["address_components"][1]["short_name"])
-            separator= " "
-            
-        else:
-            self.region_short_name = clean_spaces(city["result"]["address_components"][2]["short_name"])
-            self.region_long_name = clean_spaces(city["result"]["address_components"][2]["long_name"])
-            self.country_long_name = clean_spaces(city['result']["address_components"][3]["long_name"])
-            self.country_short_name = clean_spaces(city['result']["address_components"][3]["short_name"])
-            separator = ", "
-
-        self.raw = city
-        self.place_id = place_id
-        self.city = clean_spaces(city["result"]["name"])
-        location = city["result"]["geometry"]["location"]
-        self.location = f"{location['lat']}, {location['lng']}"
-        self.name = clean_spaces(f"{self.city}, {self.region_long_name}{separator}{self.country_long_name}")
+from connection import elastic_search
 
 
-def create_index():
-    """index the cities that are in the update"""
+def load_documents(json_file: str, bucket_key: str = 'city') -> typing.Sequence[list[dict[str, str]]]:
+    """
+    Buckets text into sequences segmented by the bucket key. 
+    returns the objects bucketed by city"""
+    return bucket(json.loads(Path(json_file).read_text()), key=lambda x:x[bucket_key])
+
+
+
+
+def city_search(es_index: str, documents: dict[str, typing.Any]) -> dict[str, typing.Any]:
+    """
+    Search for an existing value in Elasticsearch. 
+    Add a reference document if one doesn't exist.
+    Update the original document with the new location information.
+    
+    TODO: Should this be multiple functions?
+    
+    Currently updating documents is not supported and the entire index is rebuilt with this script.
+    Use the flask app (app.py) for updating single documents. Bulk updates are not supported.
+    """
+
+    for document in documents:
+        if 'id' in document:
+            document.pop('id')
+
+
+        yield document
+
+
+def create_helper_index(es_index: str):
+    """delete and recreate the index the cities that are in the update"""
     
     mappings = {
-        "mappings": {
             "properties": {
                 "location" : {
                     "type" : "geo_point"
@@ -74,76 +54,34 @@ def create_index():
                     "type": "keyword"
                 }
             }
-        }
     }
     
-    elastic_search.indices.delete(es_index)
-    elastic_search.indices.create(es_index, body=mappings)
+    elastic_search.indices.delete(index=es_index, ignore_unavailable=True)
+    elastic_search.indices.create(index=es_index, mappings=mappings)
 
 
-def city_search_gen(d: dict):
-    docs = list(d)
-    print(f"Searching for {docs[0]['city']}")
+def reindex(es_index:str, mapping: dict[str, typing.Any]) -> None:
+    """reindex the orgs that are in the update"""
     
-    for document in docs:
-        document = city_search(document)
-    
-    return app_search.put_documents(
-            engine_name=os.environ.get("ENGINE_NAME"),
-            documents=docs,
-    )
+    elastic_search.indices.delete(index=es_index, ignore_unavailable=True)
+    elastic_search.indices.create(index=es_index, mappings=mapping)
 
 
-def city_search(document: dict):
-    """process of searching for a value in Elasticsearch and 
-add a places query if missing"""
-    if document['city'].lower() == 'online':
-        print('skipping Online')
-    
-    else:
-        query = document['city']
-        body = {
-            "query": {
-                "match": {
-                    "base_query": document['city']
-                }
-            }
-        }
-    
-        request = elastic_search.search(index=es_index, body=body)
-        
-        if request['hits']['total']['value']:
-            response = request['hits']['hits'][0]['_source']
-            document['city'] = response['name']
-            document['location'] = response['location']
-                      
-        else:
-            city = City(query) # search google maps and build a city object
-            body = vars(city)
-            elastic_search.index(
-                index=es_index, body=body, refresh=True
-            )
-            document['city'] = city.name
-    
-    return document
+def main(
+    filenames: list[Path],
+    es_index: str = typer.Option("", help="Elasticsearch Index for Technical Orgs", prompt=True),
+    cities_index: str = typer.Option("", help="Elasticsearch Index for City References", prompt=True),
+    ) -> None:
 
-def update_single_doc(document: dict):
-    """Updates a single document using city_search"""
-    
-    document = city_search(document)
-    
-    return app_search.put_documents(
-        engine_name=os.environ.get("ENGINE_NAME"),
-        documents=[document],
-    )
+    for filename in ['a11y-list.json', 'diversityorgs.tech.json']:
+        for group in buckets:
+            bulk(
+                client=elastic_search,
+                index=es_index,
+                actions=city_search(documents=buckets[group], es_index=cities_index),
+                refresh=True,
+                )
 
 
 if __name__ == "__main__":
-    # create_index()
-    buckets = load_documents("diversityorgs.tech.json")
-    # gv = buckets['Greenville, SC, USA']
-    # for doc in gv:
-    #    update_single_doc(doc)
-        
-    # for docs in buckets:
-    #     city_search_gen(buckets[docs])
+    typer.run(main) 
