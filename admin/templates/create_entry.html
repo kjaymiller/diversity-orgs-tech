@@ -3,8 +3,6 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
 <span class="rounded p-2 bg-green-300">{{ message }}</span>
 {% endfor %} {% endif %} {% endwith %}
 
-{% set doc = results['_source'] %}
-
 <form class="w-1/2" action="/{{form_path}}/{{results['_id']}}" method="post">
   <input class="hidden" name="id" value="{{results['_id']}}" />
   <div class="my-2">
@@ -13,7 +11,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="name"
-      value="{{doc['name']}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -22,7 +20,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="diversity_focus"
-      value="{{','.join(doc['diversity_focus'])}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -31,7 +29,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="technology_focus"
-      value="{{','.join(doc['technology_focus'])}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -42,7 +40,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="parent_organization"
-      value="{{doc['parent_organization']}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -51,7 +49,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="city"
-      value="{{doc['city']}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -60,7 +58,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="links"
-      value="{{doc['links']}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -69,7 +67,7 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="url"
-      value="{{doc['url']}}"
+      value=""
     />
   </div>
   <div class="my-2">
@@ -78,23 +76,23 @@ get_flashed_messages() %} {% if messages %} {% for message in messages %}
       class="rounded border px-1 w-full"
       type="text"
       name="donate"
-      value="{{doc['donate']}}"
+      value=""
     />
   </div>
   <div class="my-2">
-    <label for="organization_logo">Organization Logo:</label>
+    <label for="organization_logo">Organization Logo</label>
     <input
       class="rounded border px-1 w-full"
       type="text"
       name="organization_logo"
-      value="{{doc['organization_logo']}}"
+      value=""
     />
   </div>
   <div class="flex justify-end align-middle">
     <a
-      href="/delete/{{doc['id']}}"
-      class="p-1 text-red-500 text-sm text-white"
-      >Delete</a
+      href=""
+      class="p-1 text-red-500 text-xs text-white"
+      >Cancel</a
     >
     <input type="submit" class="p-2 rounded-lg bg-blue-300" />
   </div>

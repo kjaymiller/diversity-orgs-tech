@@ -1,24 +1,29 @@
 {% extends 'base.html' %} {% block content %} {% include 'search_form.html' %}
 <small class="italic">
-  Showing {{meta['page']['total_results']}} results from "{{query}}"
+  Search found {{results['hits']['total']['value']}} results
 </small>
 
-{% for entry in results %}
-<div class="border rounded my-3 p-2 flex items-center">
-  <div class="w-1/4">
-    <img
-      class="max-w-full"
-      src="{{entry.get('organization_logo', {}).get('raw')}}"
-    />
-  </div>
+<div id="results" class="rounded my-3 p-2 max-w-1/2">
+{% for entry in results['hits']['hits'] %}
+{% set doc=entry['_source'] %}
+  <div class="flex items-center rounded border p-2">
+    {% if doc.organization_logo %}
+      <div class="max-w-xs">
+        <img
+        class="p-1 max-h-16"
+        src="{{doc['organization_logo']}}"
+        />
+      </div>
+    {% endif %}
   <div>
-    <h2 class="text-xl">
-      <a href="/edit/{{entry.id['raw']}}">{{entry.name['raw']}}</a>
+    <h2 class="text-lg font-bold">
+      <a href="/edit/{{entry['_id']}}">{{doc.name}}</a>
     </h2>
-    <h3>{{entry.city['raw']}}</h3>
-    <small><a href="/edit/{{entry.id['raw']}}">{{entry.id['raw']}}</a></small>
+    <h3>{{doc['city']}}</h3>
+    <small><a href="/edit/{{entry.id}}">{{entry['id']}}</a></small>
   </div>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endblock %} {% if meta['page']['total_results'] > 50 %}
-<div>page {{meta['page']}} of {{meta['page']['total_pages']}}</div>
-{% endif %}
+
+  {% endblock %}

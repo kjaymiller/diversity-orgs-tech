@@ -1,12 +1,13 @@
 <form action="/search" class="w-full">
-  <div class="flex">
+  <div class="max-w-xl flex border border-gray-100 justify-around rounded-2xl">
     {% if not query %} {% set query = 'Search' %} {% endif %}
     <input
       name="query"
-      class="rounded-xl p-2 mx-3 border w-3/4"
+      class="rounded-xl font-light focus:outline-none py-1 mx-1 w-3/4"
       type="text"
       placeholder="{{query}}"
     />
-    <button class="p-2 bg-purple-300 rounded-xl shadow">Search</button>
+    <button class="m-1 p-1 text-purple-300 rounded-2xl hover:bg-purple-200 transition ease-in-out delay-150 duration-200 hover:translate-y-1;
+    hover:text-white">Search</button>
   </div>
 </form>
