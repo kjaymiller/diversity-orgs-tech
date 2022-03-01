@@ -263,3 +263,5 @@ upload/*.html
 .nova
 credentials*
 .direnv
+.DS_Store
+.DS_Store
