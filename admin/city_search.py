@@ -53,26 +53,17 @@ class City:
                 ]
         )
         
-
-        match len(city['result']['address_components']):
-
-            case 1: # Disputed Territories may not have a country listed
-                self.region_short_name = clean_spaces(city['result']["address_components"][0]["short_name"])
-                self.region_long_name = clean_spaces(city['result']["address_components"][0]["long_name"])
-
-            case 3: # Country no Region
-                self.region_short_name = ""
-                self.region_long_name = ""
-                self.country_long_name = clean_spaces(city['result']["address_components"][1]["long_name"])
-                self.country_short_name = clean_spaces(city['result']["address_components"][1]["short_name"])
-                self.separator= " "
-            
-            case _: # Default format
-                self.region_short_name = clean_spaces(city["result"]["address_components"][2]["short_name"])
-                self.region_long_name = clean_spaces(city["result"]["address_components"][2]["long_name"])
-                self.country_long_name = clean_spaces(city['result']["address_components"][3]["long_name"])
-                self.country_short_name = clean_spaces(city['result']["address_components"][3]["short_name"])
-                self.separator = ", "
+        for section in city['result']['address_components']:
+            if 'locality' in section['types']:
+                self.city = section['long_name']
+        
+            if 'administrative_area_level_1' in section['types']:
+                self.region_long_name = section['long_name']
+                self.region_short_name = section['short_name']
+        
+            if 'country' in section['types']:
+                self.country_long_name = section['long_name']
+                self.country_short_name = section['short_name']
 
         self.base_query = query
         self.place_id = place_id
