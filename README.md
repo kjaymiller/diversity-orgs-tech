@@ -9,7 +9,7 @@ Have an Orginazation you would like added? Read our <#Organization Guidelines> a
 
 # Tech Stack:
 - **Admin**: [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-- **DB**: [Elastic App Search](https://www.elastic.co/app-search/)
+- **DB**: [Elasticsearch](https://www.elastic.co)/ [Elastic Cloud](elastic.co/cloud)
 - **Framework**: [React](https://reactjs.org)/[React-Router](https://reactrouter.com)
 - **Style**: [TailwindCSS](https://tailwindcss.com)
 
@@ -17,7 +17,7 @@ Have an Orginazation you would like added? Read our <#Organization Guidelines> a
 Orgs to be added must be an community, event or user group for any of the following demographics: 
 
 - Asian American Pacific Islander (AAPI)
-- Black/BIPOC
+- Black
 - First Nations/Indigenous Peoples
 - Immigrant/Refugee
 - Hispanic/Latinx
@@ -26,11 +26,14 @@ Orgs to be added must be an community, event or user group for any of the follow
 - Women
 - Youth
 
-These groups can focus on any technology discipline (including general technology) or work to improve networking or career opportunities in the underrepresented community.
+These groups can focus on any technology discipline or work to improve networking or career opportunities in the underrepresented community.
 
+### Request a by [creating an issue](https://github.com/kjaymiller/diversity-orgs-tech/issues/new?assignees=&labels=site&template=request-new-organization.md&title=)
 ### Before you Respond
 #### RE: _Your group is accepting of all types of people..._
 That's wonderful and I would hope that's the case for all tech spaces. The focus here is not for the organization but for the individual. They may want to find a group and community of folks like them and this is to aid in that discovery. If you would still like to support this project and have your organization included please consider sponsoring this project at the $20+/month or $1000/one-time rate and your name will be added to the projects README.
+
+**Approval is at the discretion of the project owner**
 
 ## License
 This project is [MIT Licensed](/LICENSE.txt)

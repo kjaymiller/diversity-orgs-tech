@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% with messages =
 get_flashed_messages() %} {% if messages %} {% for message in messages %}
 <div class="my-2">
-  <span class="rounded p-2 bg-red-300">{{ message }}</span>
+  <span class="rounded p-2 m-2 bg-red-300">{{ message }}</span>
 </div>
 {% endfor %} {% endif %} {% endwith %} {% include 'search_form.html' %}
 <div>
