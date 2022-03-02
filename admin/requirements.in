@@ -3,3 +3,5 @@ elasticsearch
 googlemaps
 flask
 typer
+pip-tools
+more-itertools
