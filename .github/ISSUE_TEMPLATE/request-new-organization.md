@@ -1,7 +1,7 @@
 ---
 name: Request New Organization
 about: Submit an organization or local meetup to be added to the platform
-title: ''
+title: '[ORG]: '
 labels: 'site'
 assignees: ''
 
